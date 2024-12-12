@@ -71,3 +71,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/School 3D Map/Library
+/School 3D Map/Temp
+/School 3D Map/Logs
