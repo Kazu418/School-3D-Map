@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/SearchBar.uss?fileID=7433441132597879392&amp;guid=abae437b0d46a4625a0852074c1f1a21&amp;type=3#SearchBar" />
+    <engine:VisualElement name="Root" style="flex-grow: 0; flex-direction: row; width: 206px; height: 42px; background-color: rgba(255, 255, 255, 0.66); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; background-size: 100% 100%; justify-content: center; align-self: center; top: 2%;">
+        <engine:VisualElement name="Search_Icon" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/UI/UI%20Image/search-icon-large.png?fileID=2800000&amp;guid=3008dc1d614c24825998c66efbbbe0d2&amp;type=3#search-icon-large&quot;); width: 8%; height: 100%; position: absolute; align-content: flex-start; align-self: center; justify-content: flex-start; background-size: contain; left: 7%;" />
+        <engine:TextField placeholder-text="Where do you want to go?" name="SearchBar" style="width: 80%; height: 60%; align-content: flex-start; left: 7%; align-items: center; justify-content: flex-end; align-self: center; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;" />
+    </engine:VisualElement>
+</engine:UXML>
