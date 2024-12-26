@@ -1,4 +1,32 @@
-#SearchBar{
+#Text_Input {
     border-width: 0;
     border-color: transparent;
+}
+
+#unity-text-input {
+    border-width: 0;
+    width: auto;
+    height: 100px;
+}
+
+.Search_action:hover {
+    background-color: rgb(214, 214, 214);
+    scale: 1.1 1.1;
+    transition-duration: 0.5s;
+}
+
+.Search_action {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.unFolded {
+    top: 8%;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.Folded {
+    top: 92%;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out-cubic;
 }
