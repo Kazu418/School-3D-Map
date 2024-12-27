@@ -277,6 +277,8 @@ MonoBehaviour:
   target: {fileID: 3342682}
   rotationSpeed: 0.1
   damping: 10
+  isDragging: 0
+  searchWindowController: {fileID: 678262803}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3043a4bf8b77545678a3643aec7cd64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDragging: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
