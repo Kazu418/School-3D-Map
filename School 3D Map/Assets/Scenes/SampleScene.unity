@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 678262802}
   - component: {fileID: 678262801}
   - component: {fileID: 678262803}
+  - component: {fileID: 678262804}
   m_Layer: 5
   m_Name: Search_UI
   m_TagString: Untagged
@@ -465,6 +466,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
+--- !u!114 &678262804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678262800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c02fafa7c1af64db7b9756b32ac77d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: d8345d1709e634436a0a4051c60be62a, type: 2}
+  itemTemplate: {fileID: 9197481963319205126, guid: 89a16ce7d1078458e8ea19d37b5113f0, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,13 @@
+.GoButton:hover {
+    background-color: rgb(214, 214, 214);
+    -unity-text-outline-color: rgba(255, 255, 255, 0);
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out-cubic;
+    scale: 1.1 1.1;
+}
+
+.GoButton {
+    background-color: rgba(255, 255, 255, 0);
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out-cubic;
+}

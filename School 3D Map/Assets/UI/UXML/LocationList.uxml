@@ -1,0 +1,20 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/LocationList.uss?fileID=7433441132597879392&amp;guid=758b539c1748348fb892e0f445de64fc&amp;type=3#LocationList" />
+    <engine:VisualElement name="Location" style="flex-grow: 0; top: 5%; width: 90%; height: 130px; align-self: center; background-color: rgb(245, 245, 245); border-top-left-radius: 41px; border-top-right-radius: 41px; border-bottom-right-radius: 41px; border-bottom-left-radius: 41px; flex-direction: row;">
+        <engine:VisualElement name="Location_Photo" style="flex-grow: 0; flex-direction: column; width: 100px; height: 100px; align-items: auto; justify-content: center; align-self: center; background-image: url(&quot;project://database/Assets/UI/UI%20Image/%E3%82%A8%E3%83%83%E3%83%95%E3%82%A7%E3%83%AB%E5%A1%9413-1.jpg?fileID=2800000&amp;guid=f34df0dc7268940ad912c108dba211f9&amp;type=3#エッフェル塔13-1&quot;); border-top-left-radius: 314px; border-top-right-radius: 314px; border-bottom-right-radius: 314px; border-bottom-left-radius: 314px; left: 2%;" />
+        <engine:VisualElement name="Location_Info" style="flex-grow: 0; width: 40%; justify-content: center; left: 6%;">
+            <engine:Label text="22番教室" name="Location_Name" style="-unity-font-style: normal; font-size: 27px; -unity-text-align: middle-left; white-space: normal; text-overflow: clip; margin-top: 0; padding-top: 0; top: 17%; justify-content: flex-start; align-self: auto; align-content: flex-start; position: absolute;" />
+            <engine:VisualElement name="Class" style="flex-grow: 0; height: 18px; width: 185px; top: 47%; position: absolute; flex-direction: row; left: 4%;">
+                <engine:Label text="-Class:" name="Class_Label" class="mainText" style="top: 0; position: relative; margin-top: 0; padding-top: 0; left: 5%;" />
+                <engine:Label text="2" name="Grade_Num" class="mainText" style="margin-top: 0; padding-top: 0; left: 10%;" />
+                <engine:Label text="-&#10;" name="Hyphen" class="mainText" style="padding-top: 0; margin-top: 0; left: 7%;" />
+                <engine:Label text="2&#10;" name="Class_Num" class="mainText" style="margin-top: 0; padding-top: 0; left: 4%;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Event" style="flex-grow: 0; height: 18px; width: 185px; top: 68%; position: absolute; flex-direction: row; left: 4%;">
+                <engine:Label text="-Event:" name="Event_Label" class="mainText" style="top: 0; position: relative; margin-top: 0; padding-top: 0; left: 5%;" />
+                <engine:Label text="高専人生ゲーム" name="Event_Name" class="mainText" style="margin-top: 0; padding-top: 0; left: 9%;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:Button icon-image="project://database/Assets/UI/UI%20Image/GO.png?fileID=2800000&amp;guid=b4bffbc1f6c6e4432b09573524cd46c5&amp;type=3#GO" name="Button_GO" class="Search_action GoButton" style="height: 104px; width: 104px; padding-left: 7px; padding-right: 7px; padding-top: 7px; margin-bottom: 4px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; align-items: center; flex-direction: row-reverse; justify-content: space-between; align-self: center; left: 25%; margin-top: 4px; border-top-left-radius: 28px; border-top-right-radius: 28px; border-bottom-right-radius: 28px; border-bottom-left-radius: 28px; padding-bottom: 7px; transition-duration: 0.4s;" />
+    </engine:VisualElement>
+</engine:UXML>
