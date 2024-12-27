@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SmoothCameraRotation : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class SmoothCameraRotation : MonoBehaviour
     private float rotationVelocity = 0f; // 現在の回転速度
     private Vector3 previousMousePosition;
     private float instantaneousSpeed = 0f; // スワイプの瞬間速度
-    private bool isDragging = false;
+    [SerializeField] private bool isDragging = false;
+    public SerachWindowController searchWindowController;
 
     void Update()
     {
@@ -32,6 +34,8 @@ public class SmoothCameraRotation : MonoBehaviour
     private void HandleInput()
     {
         // 入力開始
+        if(!searchWindowController.isDragging){
+
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;
@@ -80,6 +84,8 @@ public class SmoothCameraRotation : MonoBehaviour
             }
 
             instantaneousSpeed = 0f; // スワイプ速度をリセット
+        }
+
         }
     }
 
