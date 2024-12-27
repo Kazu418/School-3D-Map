@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7839f340cc075485f804060c401d8a64, type: 3}
   m_Name: LocationsList
   m_EditorClassIdentifier: 
-  locationName: 
-  eventName: 
-  eventPhoto: {fileID: 0}
-  gradeNumber: 0
-  classNumber: 0
+  locationName: "22\u756A\u6559\u5BA4"
+  eventName: "\u9AD8\u5C02\u4EBA\u751F\u30B2\u30FC\u30E0"
+  eventPhoto: {fileID: 2800000, guid: f34df0dc7268940ad912c108dba211f9, type: 3}
+  gradeNumber: 2
+  classNumber: 2

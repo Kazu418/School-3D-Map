@@ -23,6 +23,8 @@
 
 .Search_action {
     background-color: rgba(255, 255, 255, 0);
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out-cubic;
 }
 
 .unFolded {
@@ -35,4 +37,8 @@
     top: 92%;
     transition-duration: 0.4s;
     transition-timing-function: ease-out-cubic;
+}
+
+.mainText {
+    font-size: 18px;
 }
