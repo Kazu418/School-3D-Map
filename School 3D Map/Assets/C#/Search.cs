@@ -34,6 +34,12 @@ public class Search : MonoBehaviour
         });
 
     }
+
+    private void ResetButtonClass(){
+        var buttonGO = GetComponent<Button>();
+        buttonGO.AddToClassList("button");
+        buttonGO.RemoveFromClassList("onButtonClicked");
+    }
     void SetupListView(){
         locationListView.itemsSource = filteredLocations;
 

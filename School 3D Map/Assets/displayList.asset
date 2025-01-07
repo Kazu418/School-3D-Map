@@ -15,3 +15,11 @@ MonoBehaviour:
   locations:
   - {fileID: 11400000, guid: de5790593ce5c4142b2ee78109cb439d, type: 2}
   - {fileID: 11400000, guid: bf82e13637e8b46d7a05011e4250eccc, type: 2}
+  - {fileID: 11400000, guid: d4c379c2cb9404cd58b519c65436d81c, type: 2}
+  - {fileID: 11400000, guid: 69a27cbb253b945d6a197d81b4129949, type: 2}
+  - {fileID: 11400000, guid: cf0a76dd86fd64be289de4df8bba1f22, type: 2}
+  - {fileID: 11400000, guid: 4c0a435b7110d40febaae430ff1ea21f, type: 2}
+  - {fileID: 11400000, guid: 1a7059757072a46999df7d945024730d, type: 2}
+  - {fileID: 11400000, guid: 408be696878be43ec9c4381b0ed689c1, type: 2}
+  - {fileID: 11400000, guid: 0e88c25f5f5cc4cc0bb3e755f862fb43, type: 2}
+  - {fileID: 11400000, guid: 7023c3d50a83e47a6912e56452f2f9ad, type: 2}
