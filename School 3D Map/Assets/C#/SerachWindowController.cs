@@ -1,4 +1,5 @@
 using System.ComponentModel.Design.Serialization;
+using Mono.Cecil;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,6 +13,7 @@ public class SerachWindowController:MonoBehaviour
     private VisualElement searchBar;
     private VisualElement searchButton;
     public TextField textField;
+    private ListView locationListView;
 
 
     private Vector2 touchStartPosition;
@@ -28,8 +30,9 @@ public class SerachWindowController:MonoBehaviour
         view = root.Q<VisualElement>("View");
         searchBar = root.Q<VisualElement>("Search_Bar");
         searchButton = root.Q<VisualElement>("Search_Button");
+        locationListView = root.Q<ListView>("Location_List_View");
 
-        if(textField == null||search==null){
+        if(textField == null||search==null||locationListView == null){
             Debug.LogError("UI Document,Search内のUI要素が見つかりません。");
         }
 
@@ -50,7 +53,7 @@ public class SerachWindowController:MonoBehaviour
         searchBar.RegisterCallback<GeometryChangedEvent>(evt =>{
             float searchBarWidth = searchBar.resolvedStyle.width;
             float borderRadiusRate = 0.05f;
-            searchBar.SetBorderRadius(searchBarWidth*borderRadiusRate);//拡張メゾット
+            searchBar.SetBorderRadius(searchBarWidth*borderRadiusRate);
             //searchBarWidthは578px
 
             float searchButtonSizeRate = 0.043f;
@@ -70,9 +73,28 @@ public class SerachWindowController:MonoBehaviour
            textField.style.fontSize = textFieldWidth*fontSizeRate;
         });
 
+
+        //ボタンのクリックイベントの追加
+        locationListView.RegisterCallback<GeometryChangedEvent>(evt =>{
+            foreach(var item in locationListView.itemsSource){
+            var buttonGo = locationListView.Q<Button>("Button_GO");
+            if(buttonGo != null){
+                buttonGo.clicked += () =>{
+                    buttonGo.RemoveFromClassList("button");
+                    buttonGo.AddToClassList("onButtonClicked");
+                    print("ボタンクリックされました");
+
+                    Invoke(nameof(ResetButtonClass),0.5f);
+                };
+            }
+            else{
+                print("ボタンはNull");
+            }
+        }
+        });
     }
 
-    //これより下、RegisterCallbackによって定義され、（ユーザーが指定の動作をした場合の）実行する関数
+    //これより下、RegisterCallbackによって実行され、（ユーザーが特定の動作をした場合の）実行する関数
     private void OnFocus(FocusEvent evt){
         showWindow();
     }
@@ -109,21 +131,17 @@ public class SerachWindowController:MonoBehaviour
         if(Mathf.Abs(deltaY)>screenHeight*SwipeThreshold){
             if(deltaY < 0){
                 showWindow();
-                print("展開、新たに");
             }
             else{
                 hideWindow();
-                print("折りたたみ、新たに");
             }
         }
         else{
             if(isFolded){
                 hideWindow();
-                print("折りたたみ、元に戻る");
             }
             else{
                 showWindow();
-                print("展開、元に戻る");
             }
         }
     }
@@ -134,6 +152,14 @@ public class SerachWindowController:MonoBehaviour
     private void hideWindow(){
         search.style.top = new StyleLength(Length.Percent(92));
         isFolded = true;
+    }
+    //ボタンクリック時のアニメーション関数
+    private void ResetButtonClass(){
+        var buttonGo = root.Q<Button>("Button_GO");
+        buttonGo.RemoveFromClassList("onButtonClicked");
+        buttonGo.AddToClassList("button");
+
+        print("ボタン　戻る");
     }
 
 }
