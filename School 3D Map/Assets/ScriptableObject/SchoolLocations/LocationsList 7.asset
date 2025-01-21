@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7839f340cc075485f804060c401d8a64, type: 3}
+  m_Name: LocationsList 7
+  m_EditorClassIdentifier: 
+  locationName: "23\u756A\u6559\u5BA4"
+  eventName: "\u30DF\u30EA\u30AA\u30F3\u30B9\u30D7\u30FC\u30F3"
+  eventPhoto: {fileID: 2800000, guid: 4ff5758f3d63c49ca85542f0dc90d101, type: 3}
+  gradeNumber: 2
+  classNumber: 3
+  FloaNumber: 2
+  HubNumber: 0
