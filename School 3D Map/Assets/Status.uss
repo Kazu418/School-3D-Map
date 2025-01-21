@@ -1,0 +1,80 @@
+.SubStatus2F {
+}
+
+.SubStatusHub {
+}
+
+.MainStatus2F {
+    font-size: 351px;
+    color: rgb(63, 63, 63);
+    width: 60%;
+    height: 291px;
+    flex-shrink: 0;
+    opacity: 1;
+    display: flex;
+}
+
+.MainStatusHub {
+    font-size: 67px;
+    color: rgb(63, 63, 63);
+    width: 48%;
+    height: 646px;
+    flex-shrink: 0;
+}
+
+.MainStatusDistination {
+    top: 323px;
+    width: 63%;
+    height: 107px;
+}
+
+.SubStatusDistination {
+}
+
+.Sub_Status {
+    height: 20%;
+    left: 0;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.SubToMain_Bar_Hide {
+    height: 135%;
+    top: auto;
+    left: -72%;
+    transition-property: left, height;
+    transition-duration: 0.6s, 0.3s;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+    transition-delay: 0s, 0.6s;
+}
+
+.MainToSub_Bar_Hide {
+    height: 20%;
+    left: -72%;
+    transition-duration: 0.6s, 0.3s;
+    transition-property: left, height;
+    transition-timing-function: ease-out-cubic, ease-out-cubic;
+    transition-delay: 0s, 0.6s;
+}
+
+.SubStatus_Visual {
+    -unity-font-definition: url("project://database/Assets/Font/Montserrat-Light.ttf?fileID=12800000&guid=abb7eddf2767b44fd8fa0d27f2ebb84a&type=3#Montserrat-Light");
+    font-size: 31px;
+}
+
+.Main_Status {
+    height: 135%;
+    position: absolute;
+    top: auto;
+    left: 0;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.Show_Status {
+    display: flex;
+}
+
+.Hide_Status {
+    display: none;
+}

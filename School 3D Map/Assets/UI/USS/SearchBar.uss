@@ -14,6 +14,12 @@
     border-left-width: 0;
 }
 
+#Menu_List {
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 .Search_action:hover {
     background-color: rgb(214, 214, 214);
     scale: 1.1 1.1;
@@ -41,4 +47,53 @@
 
 .mainText {
     font-size: 18px;
+}
+
+.FocusOn_Button_Clicked {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    width: 70%;
+    padding-left: 4%;
+}
+
+.FocusOn_Button {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    width: 20%;
+    padding-left: 4%;
+}
+
+.Select_Center {
+    top: 6%;
+    left: 32%;
+    position: absolute;
+}
+
+.Select_Flag {
+    position: absolute;
+    top: 6%;
+    left: 0;
+}
+
+.FocusOn_Button_Clicked {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    width: 80%;
+    padding-left: 4%;
+}
+
+.Opacity_FocusOn_Button {
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in-cubic;
+}
+
+.Opacity_FocusOn_Button_Clicked {
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out-cubic;
 }

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf412faae4fd446a98a9ed52e38d77d, type: 3}
+  m_Name: Main_Hub
+  m_EditorClassIdentifier: 
+  Hub_Name_Num: 0
+  Num_Floors: 3
+  Floor_3D_Prefab: {fileID: 1087975680596922912, guid: e3cb97ac170c34631aa0640419142bf9, type: 3}
