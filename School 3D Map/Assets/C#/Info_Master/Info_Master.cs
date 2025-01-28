@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
@@ -12,20 +13,17 @@ public class Info_Master : MonoBehaviour
         private Master_Script Master;
         private int rank = 0;
 
-    //現在のステータスの表示内容の設定（Hubの名前を表示する部分のみ）
-    public int[] defaultH = new int[] {1};
-    public int searchHierarchyStart = 0;
-    public int searchHierarchyEnd = 3;
+    //現在のステータスの表示内容の設定（StatusのHubの名前を表示する部分のみ）
+        /// <summary>
+        /// StatusのUI部分は、このinfo_MasterのInfoから情報を取得している。その場合に、MainHubなどのHubの表示部分は、固定でHubの名前を表示したいので、Infoの何番目に入っているかを示している。
+        /// </summary>
+        public int[] defaultH = new int[] {1};
+        public int searchHierarchyStart = 0;
+        public int searchHierarchyEnd = 3;
 
     //設定用
         public Room_Manager room_Manager;
 
-
-    //校舎の名前
-        [HideInInspector]
-        public string[] Hub_Name;
-
-        [HideInInspector]
         public LocationsList Current_Location;
     //このアプリでの階層分けの深度
         static public int depth = 4;
@@ -33,14 +31,18 @@ public class Info_Master : MonoBehaviour
     /// <summary>
     /// 新しいロケーションのスクリプタブルオブジェクト用のデータ
     /// </summary>
-    public SchoolLocation AllData;
-    public SchoolLocation FirstData;
-    public SchoolLocation[] Info;
-    public GameObject[] Model;
-    public int Hierarchy;
-    public SchoolLocation location;
-
-
+        public SchoolLocation AllData;
+        public SchoolLocation FirstData;
+        public SchoolLocation[] Info;
+        public GameObject[] Model;
+        public int Hierarchy;
+        public SchoolLocation location;
+    
+    /// <summary>
+    /// Flagを作成する部分では、SchoolLocationが階層型（単純なリストではなく、Hubとフロア、また特定の教室が、親子関係によって結びついている仕組み）
+    /// それが邪魔であるので、階層型を考えずに全てをリストに変換する
+    /// </summary>
+        public List<SchoolLocation> schoolLocationsList;
 
 
     private void OnEnable(){
@@ -51,15 +53,9 @@ public class Info_Master : MonoBehaviour
     IEnumerator Start(){
         while(!Master.isInitialized[rank]){
             yield return null;
-        } 
-        
-        //校舎の名前設定
-            Room_Place_Manager[] nameList = room_Manager.room_Place_Managers;
-            Hub_Name = new string[nameList.Length];
-
-            for(int i = 0;i<nameList.Length;i++){
-                Hub_Name[i] = nameList[i].HubName;
-            }
+        }
+        //フラグ用の配列を生成
+        sortLocation(AllData);
 
         //初期設定
             New_SetCurrent(FirstData);
@@ -138,4 +134,18 @@ public void New_SetCurrent(SchoolLocation Location) {
         }
     }
 }  
+    private void sortLocation(SchoolLocation location){
+        if(location == null) return;
+
+        var hierarchy = location.Hierarchy;
+        if(1 <= hierarchy){
+            schoolLocationsList.Add(location);
+        }
+
+        if(location.ChildLocation != null){
+            foreach(var child in location.ChildLocation){
+                sortLocation(child);
+            }
+        }
+    }
 }

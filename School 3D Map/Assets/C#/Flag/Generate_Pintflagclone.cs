@@ -6,21 +6,28 @@ using System.Collections.Generic;
 
 public class Generate_Pointflagclone : MonoBehaviour
 {
+  private Info_Master info_Master;
+
   public displayList display_list;
   private LocationsList[] locations;
   private List<GameObject> flagClones = new List<GameObject> ();
   private FlagCreator flagCreator;
 
-  //Script“Ç‚İ‚İ
+  //Scriptï¿½Ç‚İï¿½ï¿½ï¿½
   private Master_Script Master;
   private Hub_Manager hub_Manager;
 
-  //Masterã‚Å‚Ì‚±‚ÌƒXƒNƒŠƒvƒg‚Ìrank
+  //Masterï¿½ï¿½Å‚Ì‚ï¿½ï¿½ÌƒXï¿½Nï¿½ï¿½ï¿½vï¿½gï¿½ï¿½rank
   private int rank = 2;
 
+  /// <summary>
+  /// schoolLocationã«ç§»è¡Œ
+  /// </summary>
+    private SchoolLocation[] schoolLocationsList;
   void OnEnable()
   {
     Master = GameObject.Find("Master").GetComponent<Master_Script>();
+    info_Master = GameObject.Find("Master").GetComponent<Info_Master>();
     hub_Manager = GetComponent<Hub_Manager>();
 
     Master.Initialize_Reaction[this.rank]++;
@@ -28,7 +35,7 @@ public class Generate_Pointflagclone : MonoBehaviour
 
   IEnumerator Start()
   {
-    //ƒtƒ‰ƒO¶¬ƒRƒ“ƒ|[ƒlƒ“ƒgæ“¾
+    //ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½|ï¿½[ï¿½lï¿½ï¿½ï¿½gï¿½æ“¾
     flagCreator = GameObject.Find("Search_Flag_Master").GetComponent<FlagCreator>();
 
     while (!Master.isInitialized[rank])
@@ -36,8 +43,10 @@ public class Generate_Pointflagclone : MonoBehaviour
       yield return null;
     }
 
+    schoolLocationsList = info_Master.schoolLocationsList.ToArray();
+
     locations = display_list.locations;
-    for (int i = 0; i < locations.Length; i++)
+    for (int i = 0; i < schoolLocationsList.Length; i++)
     {
       addflagclones(i);
     }
@@ -46,7 +55,7 @@ public class Generate_Pointflagclone : MonoBehaviour
   }
   private void addflagclones(int index)
   {
-    var location = locations[index];
+    var location = schoolLocationsList[index];
     flagClones.Add(flagCreator.CreateFlag(location, false, index));
   }
   public int Get_IndexNum(GameObject touchedflag)
