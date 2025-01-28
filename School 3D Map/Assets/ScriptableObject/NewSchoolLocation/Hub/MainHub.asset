@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7212d4e86d64c488495e775435011733, type: 3}
+  m_Name: MainHub
+  m_EditorClassIdentifier: 
+  isVisible: 1
+  Hierarchy: 1
+  LocationName: Main Hub
+  LocationPhoto: {fileID: 0}
+  ModelPrefab: {fileID: 0}
+  ChildLocation:
+  - {fileID: 11400000, guid: d04bcf3bdc564456aa0e964affff244c, type: 2}
+  - {fileID: 11400000, guid: 7dd0b17350afc446c9aeb013595310a1, type: 2}
+  - {fileID: 11400000, guid: 26bc13bcd9c504cb48fb1f236df53774, type: 2}
+  ParentLocation: {fileID: 11400000, guid: 304d70f8e47df4aa592ad38787b462aa, type: 2}
+  Floor: 0
+  EventName: 
+  GradeNumber: 0
+  ClassNumber: 0
+  RoomType: 0
+  isOrdinaryPosition: 0
+  ordinaryPosition_Number: 0
+  PositionX_InAll: 0
+  PositionZ_InAll: 0
+  PositionX_InHub: 0
+  PositionZ_InHub: 0

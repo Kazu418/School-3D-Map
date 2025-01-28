@@ -2,7 +2,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "LocationsList", menuName = "Scriptable Objects/LocationsList")]
 public class LocationsList : ScriptableObject
-{
+{   
+    public bool isVisible = true;
     public string locationName;
     public string eventName;
     public Texture2D eventPhoto;
@@ -22,4 +23,8 @@ public class LocationsList : ScriptableObject
     public float PositionX;
     [Tooltip("先ほどの is_ordinaryPositionがオフの場合には具体的な位置を設定する。")]
     public float PositionZ;
+
+    [Header("この場所の階層を選択")]
+    [Range(0,2)]
+    public int Hierarchy = 2;
 }
