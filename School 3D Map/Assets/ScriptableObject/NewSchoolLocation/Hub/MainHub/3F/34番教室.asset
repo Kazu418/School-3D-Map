@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7212d4e86d64c488495e775435011733, type: 3}
-  m_Name: "21\u756A\u6559\u5BA4"
+  m_Name: "34\u756A\u6559\u5BA4"
   m_EditorClassIdentifier: 
   isVisible: 1
   Hierarchy: 3
-  LocationName: 
-  LocationPhoto: {fileID: 0}
+  LocationName: "34\u756A\u6559\u5BA4"
+  LocationPhoto: {fileID: 2800000, guid: 5df2a503d53f04923b03076c9dc528dd, type: 3}
   ModelPrefab: {fileID: 0}
   ChildLocation: []
-  ParentLocation: {fileID: 0}
-  Floor: 0
-  EventName: 
-  GradeNumber: 0
-  ClassNumber: 0
+  ParentLocation: {fileID: 11400000, guid: 26bc13bcd9c504cb48fb1f236df53774, type: 2}
+  Floor: 3
+  EventName: "\u5B87\u5B99\u6226\u95D8\u54E1\u9078\u629C\u8A66\u9A13"
+  GradeNumber: 3
+  ClassNumber: 4
   RoomType: 0
   isOrdinaryPosition: 0
   ordinaryPosition_Number: 0

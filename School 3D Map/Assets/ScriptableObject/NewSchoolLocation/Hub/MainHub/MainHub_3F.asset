@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: MainHub_3F
   m_EditorClassIdentifier: 
   isVisible: 1
-  Hierarchy: 3
-  LocationName: 
-  LocationPhoto: {fileID: 0}
+  Hierarchy: 2
+  LocationName: MainHub 3F
+  LocationPhoto: {fileID: 2800000, guid: 03a2ce30c9629b24ea9f9f1bc5453b28, type: 3}
   ModelPrefab: {fileID: 0}
-  ChildLocation: []
-  ParentLocation: {fileID: 0}
-  Floor: 0
+  ChildLocation:
+  - {fileID: 11400000, guid: 8860f05f13f295a45992f7cec56becad, type: 2}
+  - {fileID: 11400000, guid: 0d7f69d5c2bedc4479e48ca9483c4917, type: 2}
+  - {fileID: 11400000, guid: 6accae9617fada24e8553296e9e40225, type: 2}
+  - {fileID: 11400000, guid: 251f27caa31df1041b9957071b5f32fe, type: 2}
+  - {fileID: 11400000, guid: 39ae940c1a404284c9dbc0b44cf540ee, type: 2}
+  ParentLocation: {fileID: 11400000, guid: e003ccab97ff146fdab3e12342c11b98, type: 2}
+  Floor: 3
   EventName: 
   GradeNumber: 0
   ClassNumber: 0

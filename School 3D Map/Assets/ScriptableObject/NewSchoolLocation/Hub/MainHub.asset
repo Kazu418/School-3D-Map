@@ -15,7 +15,7 @@ MonoBehaviour:
   isVisible: 1
   Hierarchy: 1
   LocationName: Main Hub
-  LocationPhoto: {fileID: 0}
+  LocationPhoto: {fileID: 2800000, guid: 03a2ce30c9629b24ea9f9f1bc5453b28, type: 3}
   ModelPrefab: {fileID: 0}
   ChildLocation:
   - {fileID: 11400000, guid: d04bcf3bdc564456aa0e964affff244c, type: 2}
