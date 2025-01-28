@@ -11,11 +11,16 @@ using UnityEngine.UIElements;
 
 public class Search : MonoBehaviour
 {
-    public displayList data;
+    //info_Master管理
+        private Info_Master info_Master;
+
+    //パスのコントロール
+        private PathController pathController;
+
     public VisualTreeAsset itemTemplate;
     private ListView locationListView;
     private TextField textInput;
-    private LocationsList[] filteredLocations;
+    
     private VisualElement root;
     public SerachWindowController searchWindowController;
 
@@ -26,11 +31,25 @@ public class Search : MonoBehaviour
     private FlagCreator flagCreator;
 
     public bool isFirstDrag = false;
+
+    /// <summary>
+    /// SchoolLocationに移行する
+    /// </summary>
+    SchoolLocation schoolLocation;
+    public List<SchoolLocation> sortedLocations = new List<SchoolLocation>();
+    public SchoolLocation[] filteredLocations;
+    public int[] defaultH;
     
     void OnEnable()
-    {   
+    {    
+        //info_masterを管理
+        info_Master = GameObject.Find("Master").GetComponent<Info_Master>();
+
         //フラグ生成コンポーネント取得
         flagCreator = GameObject.Find("Search_Flag_Master").GetComponent<FlagCreator>();
+
+        //パスファイル取得
+        pathController = GameObject.Find("Search_UI").GetComponent<PathController>();
 
         //serarch用のUI要素の検索
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -46,18 +65,24 @@ public class Search : MonoBehaviour
         //CameraのC#スクリプト取得
         cameraController = GameObject.Find("Main Camera").GetComponent<SmoothCameraRotation>();
 
-        filteredLocations = data.locations;
+        defaultH = info_Master.defaultH;
+
+
+        //SchoolLocationのデータを取得
+            schoolLocation = info_Master.AllData;
+            //AllDataから表示する内容をフィルタする。Hierarchyのフィルタは2~3で制限。
+            sortLocation(schoolLocation,0,info_Master.searchHierarchyEnd);
+            filteredLocations = sortedLocations.ToArray();
         SetupListView();
 
         textInput.RegisterValueChangedCallback(evt =>{
             string input = evt.newValue.ToLower();
-            filteredLocations = data.locations
-            .Where(location => location.locationName.ToLower().Contains(input))
+            filteredLocations = sortedLocations
+            .Where(location => location.LocationName.ToLower().Contains(input))
             .ToArray();
             //locationは、data.locationsの要素を格納するためにある変数
             SetupListView();
         });
-
     }
 
     private void Update(){
@@ -83,11 +108,11 @@ public class Search : MonoBehaviour
             var classNum = element.Q<Label>("Class_Num");
             var gradeNum = element.Q<Label>("Grade_Num");
 
-            locationNameLabel.text = location.locationName;
-            eventNameLabel.text = location.eventName;
-            classNum.text = location.classNumber.ToString();
-            gradeNum.text = location.gradeNumber.ToString();
-            locationPhoto.style.backgroundImage = new StyleBackground(location.eventPhoto);
+            locationNameLabel.text = location.LocationName;
+            eventNameLabel.text = location.EventName;
+            classNum.text = location.ClassNumber.ToString();
+            gradeNum.text = location.GradeNumber.ToString();
+            locationPhoto.style.backgroundImage = new StyleBackground(location.LocationPhoto);
 
             var buttonGo = element.Q<Button>("Button_GO");
             if(buttonGo != null){
@@ -118,10 +143,19 @@ public class Search : MonoBehaviour
         
         flagCreator.CreateFlag(location, true, 0);
 
-        statusAnimationController.ChangeLabelText(location.HubNumber,location.FloaNumber);
+        //info_Masterに反映
+        info_Master.New_SetCurrent(location);
+
+        //カメラをコントロール
+        cameraController.ChangeLocation(location);
+
+        pathController.setPath();
+
+        //flagCreator.CreateFlag(location);
+
+        var info = info_Master.Info;
+        statusAnimationController.ChangeLabelText(location);
         yield return new WaitForSeconds(0.5f);
-        //カメラをコントロール(校舎間移動はまだ機能しない)
-        cameraController.ChangeFloor(location.FloaNumber);
     }
 
     private System.Collections.IEnumerator ResetButtonClassAfterDelay(Button button, float delay)
@@ -133,5 +167,20 @@ public class Search : MonoBehaviour
         statusAnimationController.isMainStatus = false;
         searchWindowController.hideWindow();
         isFirstDrag = true;
+    }
+
+    public void sortLocation(SchoolLocation location,int startHierarchy,int endHierarchy){
+        if(location == null) return;
+
+        var hierarchy = location.Hierarchy;
+        if(startHierarchy <= hierarchy && endHierarchy >= hierarchy){
+            sortedLocations.Add(location);
+        }
+
+        if(location.ChildLocation != null){
+            foreach(var child in location.ChildLocation){
+                sortLocation(child,startHierarchy,endHierarchy);
+            }
+        }
     }
 }

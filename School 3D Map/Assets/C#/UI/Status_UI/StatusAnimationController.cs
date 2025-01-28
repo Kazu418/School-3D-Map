@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -24,21 +25,17 @@ public class StatusAnimationController : MonoBehaviour
     private Label mainHub;
     private Label subFloor;
     private Label subHub;
+    private Label mainDestination;
+    private Label subDestination;
 
-    //他のスクリプトからのUI操作用の変数
-    public int Hub_Name_Num;
-    public int Floor_Num;
 
-    //現在このスクリプトで設定しているHubとFloor
-    private int Current_Hub_Name_Num;
-    private int Current_Floor_Num;
-
-    //Hubの名前を登録する配列
-    private string[] Hub_Name = {"Main Hub"};
+    //現在情報を取得
+    private Info_Master info_Master;
 
     private void OnEnable(){
 
         Master = GameObject.Find("Master").GetComponent<Master_Script>();
+        info_Master = GameObject.Find("Master").GetComponent<Info_Master>();
 
         isCanUpdate = false;
 
@@ -55,6 +52,10 @@ public class StatusAnimationController : MonoBehaviour
         mainHub = root.Q<Label>("Main_Hub");
         subFloor = root.Q<Label>("Sub_Distination_Floa");
         subHub = root.Q<Label>("Sub_Distination_Hub");
+        mainDestination = root.Q<Label>("Main_Distination");
+        subDestination = root.Q<Label>("Sub_Distination");
+
+        //HubNameを全ての校舎の名前が書かれたScriptableObjectから読み込み
 
         Master.Initialize_Reaction[rank]++;
     }
@@ -62,13 +63,6 @@ public class StatusAnimationController : MonoBehaviour
         while(!Master.isInitialized[rank]){
             yield return null;
         }
-
-        //変数の初期化
-        Current_Hub_Name_Num = 0;
-        Current_Floor_Num = 1;
-
-        Hub_Name_Num = 0;
-        Floor_Num = 1;
 
         isMainStatus = false;
 
@@ -146,22 +140,44 @@ public class StatusAnimationController : MonoBehaviour
 
         subStatus.style.left = new StyleLength(new Length(35, LengthUnit.Percent));
     }
-    public void ChangeLabelText(int New_Hub_Num,int New_Floor_Num){
-        if(Current_Floor_Num != New_Floor_Num){
-            mainFloa.text = New_Floor_Num.ToString()+("F");
-            subFloor.text = New_Floor_Num.ToString()+("F");
-        }
-        if(Current_Hub_Name_Num != New_Hub_Num){
-            mainHub.text = Hub_Name[New_Hub_Num];
-            subHub.text = Hub_Name[New_Hub_Num];
-        }
-        Current_Floor_Num = New_Floor_Num;
-        Current_Hub_Name_Num = New_Hub_Num;
+    public void ChangeLabelText(SchoolLocation location){
+            var info = info_Master.Info;
+            var defaultS = info_Master.defaultH;
+
+            var DestinationName = location.LocationName;
+            string Direction;
+            string HubName;
+
+            if(location.Hierarchy <= 1){
+                HubName = "OUTSIDE";
+                Direction = "W";
+
+                mainFloa.text = Direction;
+                subFloor.text = Direction;
+            }
+            else{
+                HubName = info[defaultS[0]].LocationName;
+                var FloorNum = location.Floor;
+
+                mainFloa.text = FloorNum.ToString()+("F");
+                subFloor.text = FloorNum.ToString()+("F");
+            }
+
+            mainHub.text = HubName;
+            subHub.text = HubName;
+        
+            mainDestination.text = DestinationName;
+            subDestination.text = DestinationName;
     }
     private void initialize_Label_Text(){
-        mainFloa.text = Current_Floor_Num.ToString()+("F");
-        subFloor.text = Current_Floor_Num.ToString()+("F");
-        mainHub.text = Hub_Name[Current_Hub_Name_Num];
-        subHub.text = Hub_Name[Current_Hub_Name_Num];
+        var location = info_Master.location;
+        var ParentName = location.ParentLocation.LocationName;
+
+        mainFloa.text = location.Floor.ToString()+("F");
+        subFloor.text = location.Floor.ToString()+("F");
+        mainHub.text = ParentName;
+        subHub.text = ParentName;
+        mainDestination.text = location.LocationName;
+        subDestination.text = location.LocationName;
     }
 }
