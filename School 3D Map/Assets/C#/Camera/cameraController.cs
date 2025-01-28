@@ -14,6 +14,9 @@ public class SmoothCameraRotation : MonoBehaviour
     //現在写っているHubの3Dデータクローンの配列を参照
     private Hub_Manager hub_Manager;
 
+    //Info_Master
+    private Info_Master info_Master;
+
     //Update関数管理
     private bool isCanUpdate;
 
@@ -44,7 +47,7 @@ public class SmoothCameraRotation : MonoBehaviour
     private float prespectiveDistance;
     private float MoveAnimationDulation = 0.6f;
     [Header("初期階層")]
-    public int Floor = 1;
+    public int Floor;
 
     private UnityEngine.Vector3 currentVelocity = UnityEngine.Vector3.zero;
     private UnityEngine.Vector3 currentVelocityPrespective = UnityEngine.Vector3.zero; // PrespectiveObjectのための補間用
@@ -52,11 +55,16 @@ public class SmoothCameraRotation : MonoBehaviour
 
     //statusのHubと、Floorの変更用のスクリプトをロード
     private StatusAnimationController statusAnimationController;
+    //フロアのみの変更のためのLocationsList型のものを作るための関数
+    private Function function;
 
 
     private void OnEnable(){
         Master = GameObject.Find("Master").GetComponent<Master_Script>();
-        isCanUpdate =false;
+        stopCameraTracking();
+
+        info_Master = GameObject.Find("Master").GetComponent<Info_Master>();
+        function = GameObject.Find("Master").GetComponent<Function>();
 
         hub_Manager = GameObject.Find("3D_Model_Master").GetComponent<Hub_Manager>();
 
@@ -72,7 +80,9 @@ public class SmoothCameraRotation : MonoBehaviour
         while(!Master.isInitialized[rank]){
             yield return null;
         }
-        Floa_3D_Deta = hub_Manager.Current_Hub_3D[Floor];
+        Floor = info_Master.location.Floor;//一回のデータは0番目
+
+        Floa_3D_Deta = hub_Manager.Current_Hub_3D[0];
         PrespectiveObject = Instantiate(PrespectiveObject,Floa_3D_Deta.transform.position,UnityEngine.Quaternion.identity);
         
         target = PrespectiveObject.transform;
@@ -116,8 +126,7 @@ public class SmoothCameraRotation : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.Space)){
                 Floor++;
-                statusAnimationController.ChangeLabelText(0,Floor+1);
-                ChangeFloor(Floor);
+                ChangeLocation(null,Floor);
             }
         }
     }
@@ -221,9 +230,36 @@ public class SmoothCameraRotation : MonoBehaviour
         
         transform.LookAt(target);
     }
-    public void ChangeFloor(int New_Floor){
-        Floa_3D_Deta = hub_Manager.Current_Hub_3D[New_Floor-1];
+    public void ChangeLocation(SchoolLocation location = null,int Floor = -1){
+
+        if(location != null){
+            var New_Floor = location.Floor;
+            if(New_Floor == 0){
+                New_Floor = 1;
+            }
+
+            stopCameraTracking();
+            hub_Manager.LoadFloaData();
+            startCameraTracking(New_Floor);
+        }
+        else{
+            if(Floor != -1){
+                startCameraTracking(Floor);
+            }
+            else{
+                Debug.Log("ChangeLocationは引数が一つも指定していないため利用できない");
+            }
+        }
         isDragTimeOut = true;
+
+        return;
+    }
+    public void stopCameraTracking(){
+        isCanUpdate = false;
+    }
+    public void startCameraTracking(int floor = 1){
+        Floa_3D_Deta = hub_Manager.Current_Hub_3D[floor-1];
+        isCanUpdate = true;
     }
     
 }

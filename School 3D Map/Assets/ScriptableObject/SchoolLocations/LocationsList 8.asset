@@ -19,3 +19,9 @@ MonoBehaviour:
   classNumber: 4
   FloaNumber: 2
   HubNumber: 0
+  RoomType: 0
+  isOrdinaryPosition: 0
+  ordinaryPosition_Number: 0
+  PositionX: 0
+  PositionZ: 0
+  Hierarchy: 2

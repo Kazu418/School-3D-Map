@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   room_Places:
   - {fileID: 11400000, guid: 0e37b2526c9f74aff9a724a2adea3b3d, type: 2}
+  HubName: Main Hub

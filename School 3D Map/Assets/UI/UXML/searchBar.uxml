@@ -1,6 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS/SearchBar.uss?fileID=7433441132597879392&amp;guid=abae437b0d46a4625a0852074c1f1a21&amp;type=3#SearchBar" />
     <engine:VisualElement name="View" style="flex-grow: 1;">
+        <engine:VisualElement name="Path_Element" style="flex-grow: 1; position: absolute; width: 100%; height: 8%; top: 77%; flex-direction: row;" />
         <engine:VisualElement name="Mode_Selection" style="flex-grow: 1; position: absolute; height: 4%; width: 100%; top: 87.5%; left: 0;">
             <engine:Button text="Focus On:" name="FocusOn_Button" class="FocusOn_Button" style="position: relative; background-color: rgba(255, 255, 255, 0.72); border-top-left-radius: 18px; border-top-right-radius: 18px; border-bottom-right-radius: 18px; border-bottom-left-radius: 18px; font-size: 18px; white-space: normal; -unity-text-align: middle-left; transition-duration: 0.4s; transition-timing-function: ease-out-cubic; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
             <engine:VisualElement name="Opacity_Controll" style="flex-grow: 1; position: absolute; height: 47px; width: 553px; left: 216px; top: 0;">

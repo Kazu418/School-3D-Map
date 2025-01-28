@@ -17,7 +17,7 @@ public class Master_Script : MonoBehaviour
     */
 
     //rankの階層数
-    static private int rank = 3;
+    static private int rank = 5;
 
     //全体の初期化順番の管理配列
     public bool[] isInitialized = new bool[rank];
@@ -33,7 +33,7 @@ public class Master_Script : MonoBehaviour
     /// 
     /// </summary>
 
-    void Awake()
+    void OnEnable()
     {
         //初期化
         StartCoroutine(Initialize());
@@ -45,6 +45,8 @@ public class Master_Script : MonoBehaviour
     }
 
     IEnumerator Initialize(){
+        //0番目の初期化が実行されないため、0.1秒待っている
+        yield return new WaitForSeconds(0.1f);
         //階層順に初期化
         for(int i = 0;i<rank;i++){
             isInitialized[i] = true;
