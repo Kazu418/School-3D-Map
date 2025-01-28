@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isVisible: 1
   Hierarchy: 2
-  LocationName: MainHub2F
-  LocationPhoto: {fileID: 0}
+  LocationName: MainHub 2F
+  LocationPhoto: {fileID: 2800000, guid: 03a2ce30c9629b24ea9f9f1bc5453b28, type: 3}
   ModelPrefab: {fileID: 0}
   ChildLocation:
   - {fileID: 11400000, guid: c89f8b3a860a4420289a465f65b50297, type: 2}
+  - {fileID: 11400000, guid: b93838e854374de4385d61712b1343ff, type: 2}
+  - {fileID: 11400000, guid: b386c32df63113245bffbe0880aa6db2, type: 2}
+  - {fileID: 11400000, guid: 633569d3036bf5444b09b8140ca106d9, type: 2}
+  - {fileID: 11400000, guid: a87831e9ea68dc14ebdae7a5849f16da, type: 2}
   ParentLocation: {fileID: 11400000, guid: e003ccab97ff146fdab3e12342c11b98, type: 2}
   Floor: 2
   EventName: 

@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7212d4e86d64c488495e775435011733, type: 3}
-  m_Name: Library
+  m_Name: "\u30BB\u30DF\u30CA\u30FC\u5BA4"
   m_EditorClassIdentifier: 
   isVisible: 1
-  Hierarchy: 1
-  LocationName: Library
-  LocationPhoto: {fileID: 2800000, guid: 951f753a2a611d940bc16e6fe3e2be75, type: 3}
+  Hierarchy: 3
+  LocationName: "\u30BB\u30DF\u30CA\u30FC\u5BA4"
+  LocationPhoto: {fileID: 2800000, guid: 5cf33cf1f26c3944589edf614dde93bd, type: 3}
   ModelPrefab: {fileID: 0}
-  ChildLocation:
-  - {fileID: 11400000, guid: abb8daeb34702a648bb3be74a0b1f889, type: 2}
-  - {fileID: 11400000, guid: 7c6ac753d97e45a4db880f28d8e255c3, type: 2}
-  ParentLocation: {fileID: 11400000, guid: 304d70f8e47df4aa592ad38787b462aa, type: 2}
-  Floor: 0
+  ChildLocation: []
+  ParentLocation: {fileID: 11400000, guid: 7c6ac753d97e45a4db880f28d8e255c3, type: 2}
+  Floor: 2
   EventName: 
   GradeNumber: 0
   ClassNumber: 0
