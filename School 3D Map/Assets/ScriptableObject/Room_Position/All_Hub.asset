@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: All_Hub
   m_EditorClassIdentifier: 
   room_Place_Managers:
-  - {fileID: 11400000, guid: 54029af8a0cf2499e8064363331e5f34, type: 2}
   - {fileID: 11400000, guid: b638bb64d556a4c98ad468cf780d3047, type: 2}
+  - {fileID: 11400000, guid: 54029af8a0cf2499e8064363331e5f34, type: 2}

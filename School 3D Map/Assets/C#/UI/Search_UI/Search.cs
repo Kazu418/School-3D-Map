@@ -141,6 +141,7 @@ public class Search : MonoBehaviour
     IEnumerator OnGoButtonClicked(int index){
         var location = filteredLocations[index];
         
+        //flagCreator.CreateFlag(location, true, 0);
        // flagCreator.CreateFlag(location, true, 0);
 
         //info_Masterに反映

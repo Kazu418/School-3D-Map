@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/PathButton.uss?fileID=7433441132597879392&amp;guid=9bc8321c48aaa4430b825ccd1f9e0b9c&amp;type=3#PathButton" />
+    <Style src="project://database/Assets/UI/USS/PathButton.uss?fileID=7433441132597879392&amp;guid=9bc8321c48aaa4430b825ccd1f9e0b9c&amp;type=3#PathButton" />
     <engine:VisualElement name="Path_Button_UI" style="flex-grow: 0; height: 13%; width: 100%;">
-        <engine:Button name="Path_Button" style="-unity-font-definition: url(&quot;project://database/Assets/Font/Montserrat-Light.ttf?fileID=12800000&amp;guid=abb7eddf2767b44fd8fa0d27f2ebb84a&amp;type=3#Montserrat-Light&quot;); background-color: rgba(255, 255, 255, 0.78); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; width: 100%; height: 100%;" />
+        <engine:Button name="Path_Button" style="-unity-font-definition: url(&quot;project://database/Assets/Font/Montserrat-Light.ttf?fileID=12800000&amp;guid=abb7eddf2767b44fd8fa0d27f2ebb84a&amp;type=3#Montserrat-Light&quot;); background-color: rgba(255, 255, 255, 0.18); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; width: 98%; height: 100%; opacity: 1; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;" />
     </engine:VisualElement>
 </engine:UXML>

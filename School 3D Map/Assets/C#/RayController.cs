@@ -2,79 +2,97 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class RaycastController : MonoBehaviour
 {
-  public Camera mainCamera;
-  public EventSystem eventSystem;
-  public SerachWindowController searchWindowController;  // QÆƒtƒB[ƒ‹ƒh’Ç‰Á
-  public Image fadePanel;             // ƒtƒF[ƒh—p‚ÌUIƒpƒlƒ‹iImagej
-  public float fadeDuration = 1.0f;   // ƒtƒF[ƒh‚ÌŠ®—¹‚É‚©‚©‚éŠÔ
+    public Camera mainCamera; // ãƒ¡ã‚¤ãƒ³ã‚«ãƒ¡ãƒ©
+    public EventSystem eventSystem; // ã‚¤ãƒ™ãƒ³ãƒˆã‚·ã‚¹ãƒ†ãƒ 
+    public SerachWindowController searchWindowController; // æ¤œç´¢ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
+    public Image fadePanel; // ãƒ•ã‚§ãƒ¼ãƒ‰ç”¨UIãƒ‘ãƒãƒ«ï¼ˆImageï¼‰
+    public float fadeDuration = 1.0f; // ãƒ•ã‚§ãƒ¼ãƒ‰ã®æ‰€è¦æ™‚é–“
 
-  void Update()
-  {
-    if (Input.GetMouseButtonDown(0)) // ¶ƒNƒŠƒbƒN‚ÅRaycast
-    {
-      Debug.Log("Left mouse button pressed.");
+    //ãƒ•ãƒ©ã‚°ã®ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
+    private Generate_Pointflagclone generate_Flag;
+
+    private void OnEnable(){
+        generate_Flag = GameObject.Find("Search_Flag_Master").GetComponent<Generate_Pointflagclone>();
     }
-    if (Input.GetMouseButtonUp(0))
-    {
-      // UI‚ªƒqƒbƒg‚µ‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN
-      if (searchWindowController.isDragging == false)
-      {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+    void Update()
+    {
+        // å·¦ã‚¯ãƒªãƒƒã‚¯ã®å…¥åŠ›ã‚’æ¤œçŸ¥ã—ã¦Raycastã‚’å®Ÿè¡Œ
+        if (Input.GetMouseButtonDown(0))
         {
-          // Raycast‚ª“–‚½‚Á‚½ƒIƒuƒWƒFƒNƒg‚ÌLocations List‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾
-          GameObject touchedobject = hit.collider.gameObject;
-          Generate_Pointflagclone gen_flagclone = gameObject.AddComponent<Generate_Pointflagclone>();
-          HandleRaycastHit(gen_flagclone.Get_IndexNum(touchedobject));
+            Debug.Log("Left mouse button pressed.");
         }
-      }
-      else
-      {
-        Debug.Log("Raycast was blocked by UI.");
-      }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            // UIãŒãƒ’ãƒƒãƒˆã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯
+            if (searchWindowController.isDragging == false)
+            {
+                Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    // Raycastã®ãƒ’ãƒƒãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰Locations Listã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—
+                    GameObject touchedObject = hit.collider.gameObject;
+
+                    var index = generate_Flag.Get_IndexNum(touchedObject);
+                    print(index);
+
+                    /*
+                    Generate_Pointflagclone genFlagClone = gameObject.AddComponent<Generate_Pointflagclone>();
+                    HandleRaycastHit(genFlagClone.Get_IndexNum(touchedObject));
+                    */
+                }
+            }
+            else
+            {
+                Debug.Log("Raycast was blocked by UI.");
+            }
+        }
     }
-  }
 
-  void HandleRaycastHit(int index)
-  {
-    Debug.Log(index);
-  }
-  public IEnumerator Fade()
-  {
-    fadePanel.enabled = true;                 // ƒpƒlƒ‹‚ğ—LŒø‰»
-    float elapsedTime = 0.0f;                 // Œo‰ßŠÔ‚ğ‰Šú‰»
-    Color startColor = fadePanel.color;       // ƒtƒF[ƒhƒpƒlƒ‹‚ÌŠJnF‚ğæ“¾
-    Color endColor = new Color(startColor.r, startColor.g, startColor.b, 1.0f); // ƒtƒF[ƒhƒpƒlƒ‹‚ÌÅIF‚ğİ’è
-
-    // ƒtƒF[ƒhƒAƒEƒgƒAƒjƒ[ƒVƒ‡ƒ“‚ğÀs
-    while (elapsedTime < fadeDuration)
+    // Raycastã®çµæœã‚’å‡¦ç†ã™ã‚‹
+    void HandleRaycastHit(int index)
     {
-      elapsedTime += Time.deltaTime;                        // Œo‰ßŠÔ‚ğ‘‚â‚·
-      float t = Mathf.Clamp01(elapsedTime / fadeDuration);  // ƒtƒF[ƒh‚Ìis“x‚ğŒvZ
-      fadePanel.color = Color.Lerp(startColor, endColor, t); // ƒpƒlƒ‹‚ÌF‚ğ•ÏX‚µ‚ÄƒtƒF[ƒhƒAƒEƒg
-      yield return null;                                     // 1ƒtƒŒ[ƒ€‘Ò‹@
+        Debug.Log(index);
     }
 
-    fadePanel.color = endColor;  // ƒtƒF[ƒh‚ªŠ®—¹‚µ‚½‚çÅIF‚Éİ’è
-
-    elapsedTime = 0.0f;                 // Œo‰ßŠÔ‚ğ‰Šú‰»
-    startColor = fadePanel.color;       // ƒtƒF[ƒhƒpƒlƒ‹‚ÌŠJnF‚ğæ“¾
-    endColor = new Color(startColor.r, startColor.g, startColor.b, 1.0f); // ƒtƒF[ƒhƒpƒlƒ‹‚ÌÅIF‚ğİ’è
-
-    // ƒtƒF[ƒhƒAƒEƒgƒAƒjƒ[ƒVƒ‡ƒ“‚ğÀs
-    while (elapsedTime < fadeDuration)
+    // ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç†
+    public IEnumerator Fade()
     {
-      elapsedTime += Time.deltaTime;                        // Œo‰ßŠÔ‚ğ‘‚â‚·
-      float t = Mathf.Clamp01(elapsedTime / fadeDuration);  // ƒtƒF[ƒh‚Ìis“x‚ğŒvZ
-      fadePanel.color = Color.Lerp(fadePanel.color, new Color(0, 0, 0, 0), t); // ƒpƒlƒ‹‚Ì“§–¾“x‚ğ•ÏX‚µ‚ÄƒtƒF[ƒh
-      yield return null;                                     // 1ƒtƒŒ[ƒ€‘Ò‹@
+        fadePanel.enabled = true; // ãƒ‘ãƒãƒ«ã‚’æœ‰åŠ¹åŒ–
+        float elapsedTime = 0.0f; // çµŒéæ™‚é–“ã®åˆæœŸåŒ–
+        Color startColor = fadePanel.color; // ãƒ•ã‚§ãƒ¼ãƒ‰ãƒ‘ãƒãƒ«ã®é–‹å§‹è‰²
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 1.0f); // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆæ™‚ã®è‰²
+
+        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime; // çµŒéæ™‚é–“ã‚’å¢—åŠ 
+            float t = Mathf.Clamp01(elapsedTime / fadeDuration); // ãƒ•ã‚§ãƒ¼ãƒ‰é€²è¡Œåº¦ã‚’è¨ˆç®—
+            fadePanel.color = Color.Lerp(startColor, endColor, t); // ãƒ‘ãƒãƒ«ã®è‰²ã‚’å¾ã€…ã«å¤‰åŒ–
+            yield return null; // 1ãƒ•ãƒ¬ãƒ¼ãƒ å¾…æ©Ÿ
+        }
+
+        fadePanel.color = endColor; // ãƒ•ã‚§ãƒ¼ãƒ‰çµ‚äº†æ™‚ã®è‰²ã‚’ã‚»ãƒƒãƒˆ
+
+        elapsedTime = 0.0f; // çµŒéæ™‚é–“ã®åˆæœŸåŒ–
+        startColor = fadePanel.color; // é–‹å§‹è‰²ã‚’æ›´æ–°
+        endColor = new Color(startColor.r, startColor.g, startColor.b, 0.0f); // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³æ™‚ã®è‰²
+
+        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime; // çµŒéæ™‚é–“ã‚’å¢—åŠ 
+            float t = Mathf.Clamp01(elapsedTime / fadeDuration); // ãƒ•ã‚§ãƒ¼ãƒ‰é€²è¡Œåº¦ã‚’è¨ˆç®—
+            fadePanel.color = Color.Lerp(startColor, endColor, t); // ãƒ‘ãƒãƒ«ã®è‰²ã‚’å¾ã€…ã«å¤‰åŒ–
+            yield return null; // 1ãƒ•ãƒ¬ãƒ¼ãƒ å¾…æ©Ÿ
+        }
+
+        fadePanel.enabled = false; // ãƒ‘ãƒãƒ«ã‚’ç„¡åŠ¹åŒ–
     }
-    fadePanel.enabled = false;                 // ƒpƒlƒ‹‚ğ–³Œø‰»
-  }
 }
