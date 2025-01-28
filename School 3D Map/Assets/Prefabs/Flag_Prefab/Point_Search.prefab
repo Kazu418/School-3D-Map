@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2559856455981835884}
   - component: {fileID: 6033948419875639507}
-  - component: {fileID: 5755070053362383081}
+  - component: {fileID: 6332146023742484052}
   m_Layer: 6
   m_Name: Point_Search
   m_TagString: Untagged
@@ -88,16 +88,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5755070053362383081
-MonoBehaviour:
+--- !u!65 &6332146023742484052
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4500331364608467395}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e75f67240637145a0b00ea1538f7c5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetCamera: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.129999, y: 14.469999, z: 0.19999999}
+  m_Center: {x: 0, y: 0, z: 0}

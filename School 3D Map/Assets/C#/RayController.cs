@@ -21,25 +21,17 @@ public class RaycastController : MonoBehaviour
     if (Input.GetMouseButtonUp(0))
     {
       // UIがヒットしているかチェック
-      if (searchWindowController.isDragging == true)
+      if (searchWindowController.isDragging == false)
       {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
         {
-          // Raycastが当たったオブジェクトのFlagsListを取得
-          FlagData someScript = hit.collider.GetComponent<FlagData>();
-
-          if (someScript != null)
-          {
-            FlagsList flagdata = someScript.flagdata;
-            if (flagdata != null)
-            {
-              // flagdataに基づいて処理を行う
-              HandleRaycastHit(flagdata);
-            }
-          }
+          // Raycastが当たったオブジェクトのLocations Listのインデックスを取得
+          GameObject touchedobject = hit.collider.gameObject;
+          Generate_Pointflagclone gen_flagclone = gameObject.AddComponent<Generate_Pointflagclone>();
+          HandleRaycastHit(gen_flagclone.Get_IndexNum(touchedobject));
         }
       }
       else
@@ -49,48 +41,9 @@ public class RaycastController : MonoBehaviour
     }
   }
 
-  void HandleRaycastHit(FlagsList flagsList)
+  void HandleRaycastHit(int index)
   {
-    // FlagsListのType, ID, Statusを基に異なる動きをする
-    switch (flagsList.Type)
-    {
-      case 0:
-        // 校舎別の処理
-        if (flagsList.Status == 0)
-        {
-          Debug.Log($"校舎 {flagsList.ID} は不可です");
-          // 例えば不可の場合、オブジェクトを非表示にする
-          // hit.collider.gameObject.SetActive(false);
-        }
-        else
-        {
-          Debug.Log($"校舎 {flagsList.ID} は可です");
-          Fade();
-          // 例えば可の場合、オブジェクトを表示する
-          // hit.collider.gameObject.SetActive(true);
-        }
-        break;
-
-      case 1:
-        // 階層別の処理
-        if (flagsList.Status == 0)
-        {
-          Debug.Log($"階層 {flagsList.ID} は不可です");
-          // 例えば不可の場合、オブジェクトを非表示にする
-          // hit.collider.gameObject.SetActive(false);
-        }
-        else
-        {
-          Debug.Log($"階層 {flagsList.ID} は可です");
-          // 例えば可の場合、オブジェクトを表示する
-          // hit.collider.gameObject.SetActive(true);
-        }
-        break;
-
-      default:
-        Debug.LogWarning("Unknown Type");
-        break;
-    }
+    Debug.Log(index);
   }
   public IEnumerator Fade()
   {

@@ -27,7 +27,6 @@ public class Search : MonoBehaviour
 
     public bool isFirstDrag = false;
     
-    
     void OnEnable()
     {   
         //フラグ生成コンポーネント取得
@@ -116,8 +115,8 @@ public class Search : MonoBehaviour
     
     IEnumerator OnGoButtonClicked(int index){
         var location = filteredLocations[index];
-
-        flagCreator.CreateFlag(location);
+        
+        flagCreator.CreateFlag(location, true, 0);
 
         statusAnimationController.ChangeLabelText(location.HubNumber,location.FloaNumber);
         yield return new WaitForSeconds(0.5f);
