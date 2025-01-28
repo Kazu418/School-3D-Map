@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -280,6 +281,23 @@ MonoBehaviour:
   isDragTimeOut: 0
   Floor: 0
   PrespectiveObject: {fileID: 7570478292116372480, guid: 493f8138543ec4e869ba167296af290a, type: 3}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54cd76bae2e94d548b080b0f65da83dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 330585545}
+  eventSystem: {fileID: 0}
+  searchWindowController: {fileID: 678262803}
+  fadePanel: {fileID: 0}
+  fadeDuration: 1
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,12 +970,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Point_Search
       objectReference: {fileID: 0}
-    - target: {fileID: 5755070053362383081, guid: f883f88f0934b444ca1a4ec08e0704ab, type: 3}
-      propertyPath: targetCamera
-      value: 
-      objectReference: {fileID: 330585545}
-    m_RemovedComponents:
-    - {fileID: 5755070053362383081, guid: f883f88f0934b444ca1a4ec08e0704ab, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
